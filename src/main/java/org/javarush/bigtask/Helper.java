@@ -1,4 +1,4 @@
-package com.javarush.test.level33.lesson15.big01;
+package org.javarush.bigtask;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;

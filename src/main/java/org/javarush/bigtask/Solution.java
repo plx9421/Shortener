@@ -1,6 +1,7 @@
-package com.javarush.test.level33.lesson15.big01;
+package org.javarush.bigtask;
 
-import com.javarush.test.level33.lesson15.big01.strategies.*;
+
+import org.javarush.bigtask.strategies.*;
 
 import java.util.Date;
 import java.util.HashSet;

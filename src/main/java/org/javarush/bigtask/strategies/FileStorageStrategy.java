@@ -1,4 +1,4 @@
-package com.javarush.test.level33.lesson15.big01.strategies;
+package org.javarush.bigtask.strategies;
 
 /**
  * Created by Alexey on 19.03.2016.

@@ -1,8 +1,8 @@
-package com.javarush.test.level33.lesson15.big01.tests;
+package org.javarush.bigtask.tests;
 
-import com.javarush.test.level33.lesson15.big01.Helper;
-import com.javarush.test.level33.lesson15.big01.Shortener;
-import com.javarush.test.level33.lesson15.big01.strategies.*;
+import org.javarush.bigtask.Helper;
+import org.javarush.bigtask.Shortener;
+import org.javarush.bigtask.strategies.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -22,8 +22,8 @@ public class FunctionalTest {
         Long l2 = shortener.getId(s2);
         Long l3 = shortener.getId(s3);
 
-        Assert.assertNotEquals(l1, l2);
-        Assert.assertNotEquals(l3, l2);
+        Assert.assertEquals(l1, l2);
+        Assert.assertEquals(l3, l2);
 
         Assert.assertEquals(l1, l3);
 

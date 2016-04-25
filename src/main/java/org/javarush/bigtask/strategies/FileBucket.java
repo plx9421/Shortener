@@ -1,6 +1,7 @@
-package com.javarush.test.level33.lesson15.big01.strategies;
+package org.javarush.bigtask.strategies;
 
-import com.javarush.test.level33.lesson15.big01.ExceptionHandler;
+
+import org.javarush.bigtask.ExceptionHandler;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

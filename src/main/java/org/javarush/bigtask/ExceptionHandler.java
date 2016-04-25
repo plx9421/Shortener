@@ -1,4 +1,4 @@
-package com.javarush.test.level33.lesson15.big01;
+package org.javarush.bigtask;
 
 /**
  * Created by Alexey on 17.03.2016.

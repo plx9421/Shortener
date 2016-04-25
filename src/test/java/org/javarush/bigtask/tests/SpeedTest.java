@@ -1,9 +1,9 @@
-package com.javarush.test.level33.lesson15.big01.tests;
+package org.javarush.bigtask.tests;
 
-import com.javarush.test.level33.lesson15.big01.Helper;
-import com.javarush.test.level33.lesson15.big01.Shortener;
-import com.javarush.test.level33.lesson15.big01.strategies.HashBiMapStorageStrategy;
-import com.javarush.test.level33.lesson15.big01.strategies.HashMapStorageStrategy;
+import org.javarush.bigtask.Helper;
+import org.javarush.bigtask.Shortener;
+import org.javarush.bigtask.strategies.HashBiMapStorageStrategy;
+import org.javarush.bigtask.strategies.HashMapStorageStrategy;
 import org.junit.Assert;
 import org.junit.Test;
 

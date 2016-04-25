@@ -1,6 +1,7 @@
-package com.javarush.test.level33.lesson15.big01;
+package org.javarush.bigtask;
 
-import com.javarush.test.level33.lesson15.big01.strategies.StorageStrategy;
+
+import org.javarush.bigtask.strategies.StorageStrategy;
 
 /**
  * Created by Alexey on 17.03.2016.
