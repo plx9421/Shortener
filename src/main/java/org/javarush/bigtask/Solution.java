@@ -3,6 +3,7 @@ package org.javarush.bigtask;
 
 import org.javarush.bigtask.strategies.*;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -58,12 +59,13 @@ public class Solution {
 
     }
 
-    public static void main(String[] args) {
-        testStrategy(new HashMapStorageStrategy(), 10_000);
-        testStrategy(new OurHashMapStorageStrategy(), 10_000);
-        testStrategy(new FileStorageStrategy(), 100);
-        testStrategy(new OurHashBiMapStorageStrategy(), 10_000);
-        testStrategy(new HashBiMapStorageStrategy(), 10_000);
-        testStrategy(new DualHashBidiMapStorageStrategy(), 10_000);
+    public static void main(String[] args) throws SQLException {
+//        testStrategy(new HashMapStorageStrategy(), 10_000);
+//        testStrategy(new OurHashMapStorageStrategy(), 10_000);
+//        testStrategy(new FileStorageStrategy(), 100);
+//        testStrategy(new OurHashBiMapStorageStrategy(), 10_000);
+//        testStrategy(new HashBiMapStorageStrategy(), 10_000);
+//        testStrategy(new DualHashBidiMapStorageStrategy(), 10_000);
+        testStrategy(new JDBCStorageStrategy(), 10_000);
     }
 }
