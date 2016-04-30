@@ -66,6 +66,6 @@ public class Solution {
 //        testStrategy(new OurHashBiMapStorageStrategy(), 10_000);
 //        testStrategy(new HashBiMapStorageStrategy(), 10_000);
 //        testStrategy(new DualHashBidiMapStorageStrategy(), 10_000);
-        testStrategy(new JDBCStorageStrategy(), 10_000);
+        testStrategy(new JDBCStorageStrategy(), 100);
     }
 }
