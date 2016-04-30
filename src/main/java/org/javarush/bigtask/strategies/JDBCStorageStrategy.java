@@ -12,11 +12,11 @@ public class JDBCStorageStrategy implements StorageStrategy {
     private final String USERNAME = "root";
     private final String PASSWORD = "SungSung743";
 
-    public JDBCStorageStrategy() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-//        Driver driver = new FabricMySQLDriver();
-//        DriverManager.registerDriver(driver);
+    public JDBCStorageStrategy() throws SQLException {
+        Driver driver = new FabricMySQLDriver();
+        DriverManager.registerDriver(driver);
 
-        Class.forName("com.mysql.jdbc.Driver").newInstance();
+//        Class.forName("com.mysql.jdbc.Driver").newInstance();
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
              Statement statement = connection.createStatement()) {
             statement.execute("DROP TABLE if exists `storagestrategy`");
@@ -35,7 +35,7 @@ public class JDBCStorageStrategy implements StorageStrategy {
 
     @Override
     public boolean containsValue(String value) {
-        return false;
+        return getKey(value) != null;
     }
 
     @Override
@@ -53,22 +53,29 @@ public class JDBCStorageStrategy implements StorageStrategy {
     @Override
     public Long getKey(String value) {
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-             Statement statement = connection.createStatement()) {
-//            PreparedStatement st;
-//            String stString = "SELECT key FROM storagestrategy WHERE value=:value";
-//            st.
-//            st.setLong("value", value);
-//            st.set
-
-            String sqlString = "SELECT hash_key FROM storagestrategy WHERE ss_value=" + value + ";";
-            ResultSet resultSet = statement.executeQuery(sqlString);
-            if (resultSet != null) {
+             PreparedStatement st = connection.prepareStatement("SELECT hash_key FROM storagestrategy WHERE ss_value = ?")) {
+            st.setString(1, value);
+            ResultSet resultSet = st.executeQuery();
+            if (resultSet != null && resultSet.first()) {
                 return resultSet.getLong("hash_key");
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+//        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+//             Statement statement = connection.createStatement()) {
+//
+//            String sqlString = "SELECT hash_key FROM storagestrategy WHERE ss_value='" + value + "';";
+//            ResultSet resultSet = statement.executeQuery(sqlString);
+//            if (resultSet != null && resultSet.first()) {
+//                return resultSet.getLong("hash_key");
+//            }
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
 
         return null;
     }
@@ -79,8 +86,7 @@ public class JDBCStorageStrategy implements StorageStrategy {
              Statement statement = connection.createStatement()) {
             String sqlString = "SELECT ss_value FROM storagestrategy WHERE hash_key=" + key + ";";
             ResultSet resultSet = statement.executeQuery(sqlString);
-            if (resultSet != null) {
-                resultSet.first();
+            if (resultSet != null && resultSet.first()) {
                 return resultSet.getString("ss_value");
             }
 
