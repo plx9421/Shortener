@@ -10,7 +10,7 @@ import java.sql.*;
 public class JDBCStorageStrategy implements StorageStrategy {
     private final String URL = "jdbc:mysql://localhost:3306/mydatabase?useSSL=false";
     private final String USERNAME = "root";
-    private final String PASSWORD = "SungSung743";
+    private final String PASSWORD = "";
 
     public JDBCStorageStrategy() throws SQLException {
         Driver driver = new FabricMySQLDriver();
