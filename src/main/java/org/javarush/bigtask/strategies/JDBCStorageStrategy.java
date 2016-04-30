@@ -12,9 +12,11 @@ public class JDBCStorageStrategy implements StorageStrategy {
     private final String USERNAME = "root";
     private final String PASSWORD = "SungSung743";
 
-    public JDBCStorageStrategy() throws SQLException {
-        Driver driver = new FabricMySQLDriver();
-        DriverManager.registerDriver(driver);
+    public JDBCStorageStrategy() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+//        Driver driver = new FabricMySQLDriver();
+//        DriverManager.registerDriver(driver);
+
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
              Statement statement = connection.createStatement()) {
             statement.execute("DROP TABLE if exists `storagestrategy`");
@@ -60,7 +62,7 @@ public class JDBCStorageStrategy implements StorageStrategy {
 
             String sqlString = "SELECT hash_key FROM storagestrategy WHERE ss_value=" + value + ";";
             ResultSet resultSet = statement.executeQuery(sqlString);
-            if (resultSet != null){
+            if (resultSet != null) {
                 return resultSet.getLong("hash_key");
             }
 
@@ -77,7 +79,7 @@ public class JDBCStorageStrategy implements StorageStrategy {
              Statement statement = connection.createStatement()) {
             String sqlString = "SELECT ss_value FROM storagestrategy WHERE hash_key=" + key + ";";
             ResultSet resultSet = statement.executeQuery(sqlString);
-            if (resultSet != null){
+            if (resultSet != null) {
                 resultSet.first();
                 return resultSet.getString("ss_value");
             }

@@ -59,7 +59,7 @@ public class Solution {
 
     }
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 //        testStrategy(new HashMapStorageStrategy(), 10_000);
 //        testStrategy(new OurHashMapStorageStrategy(), 10_000);
 //        testStrategy(new FileStorageStrategy(), 100);
